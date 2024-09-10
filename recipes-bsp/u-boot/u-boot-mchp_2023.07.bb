@@ -14,7 +14,7 @@ COMPATIBLE_MACHINE = '(sama5d3xek|sama5d3-xplained|sama5d3-xplained-sd|at91sam9x
 
 UBRANCH = "u-boot-2023.07-mchp"
 
-SRC_URI = "git://github.com/linux4microchip/u-boot-mchp.git;protocol=https;branch=${UBRANCH}"
+SRC_URI = "git://github.com/cglee-lowa/u-boot-mchp.git;protocol=https;branch=${UBRANCH}"
 
 S = "${WORKDIR}/git"
 

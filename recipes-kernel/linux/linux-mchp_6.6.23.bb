@@ -17,6 +17,7 @@ sama5d27-som1-ek-optee-sd = " file://sama5-linux-optee.cfg \
                               file://sama5d2/0001-dts-include-optee-dtsi.patch \
                               "
 SRC_URI:append:sam9x60    = " file://at91_dt.cfg"
+SRC_URI:append:sam9x60    = " file://sam9x60/mbc2024.patch"
 
 SRCREV = "bf96df830936986fdb3c7789749ff599300dae01"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"

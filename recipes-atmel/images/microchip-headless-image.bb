@@ -13,6 +13,7 @@ IMAGE_INSTALL += "\
     cryptoauthlib \
     python3-cryptoauthlib \
     p11-kit \
+	tc2 \
     "
 
 IMAGE_INSTALL:append:sama5d2 = " nodejs nodejs-npm"

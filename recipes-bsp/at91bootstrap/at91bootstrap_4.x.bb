@@ -11,6 +11,7 @@ SRC_URI = "git://github.com/cglee-lowa/at91bootstrap.git;protocol=https;branch=a
 
 PV = "4.0.9+git${SRCPV}"
 #SRCREV = "e240bd43c149ab868741d1728af2f5973d2a6735"
+SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 

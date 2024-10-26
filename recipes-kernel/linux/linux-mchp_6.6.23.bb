@@ -17,12 +17,15 @@ sama5d27-som1-ek-optee-sd = " file://sama5-linux-optee.cfg \
                               file://sama5d2/0001-dts-include-optee-dtsi.patch \
                               "
 SRC_URI:append:sam9x60    = " file://at91_dt.cfg"
-SRC_URI:append:sam9x60    = " file://sam9x60/mbc2024.patch"
+#cglee 2024.10.26
+SRC_URI:append:sam9x60    = " file://sam9x60/at91-sam9x60_curiosity.dts"
 
 SRCREV = "bf96df830936986fdb3c7789749ff599300dae01"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 KERNEL_MODULE_AUTOLOAD:append:sama5d27-wlsom1-ek-sd = " wilc-sdio"
+#cglee 2024.10.26
+KERNEL_DEVICETREE = "at91-sam9x60_curiosity.dtb"
 
 COMPATIBLE_MACHINE = "(at91sam9x5ek|at91sam9m10g45ek|at91sam9rlek\
 |sama5d2-xplained|sama5d2-xplained-sd|sama5d2-xplained-emmc\

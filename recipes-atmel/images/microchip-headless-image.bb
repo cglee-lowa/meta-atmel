@@ -13,8 +13,10 @@ IMAGE_INSTALL += "\
     cryptoauthlib \
     python3-cryptoauthlib \
     p11-kit \
-	tc2 \
     "
+	
+IMAGE_INSTALL:append:sam9x60-curiosity-sd = " tc2 e2fsprogs parted"
+IMAGE_INSTALL:remove:sam9x60-curiosity-sd = " bluez5 alsa-utils"
 
 IMAGE_INSTALL:append:sama5d2 = " nodejs nodejs-npm"
 IMAGE_INSTALL:append:sama5d3 = " nodejs nodejs-npm"

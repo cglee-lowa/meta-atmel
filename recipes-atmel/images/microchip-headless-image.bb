@@ -15,7 +15,7 @@ IMAGE_INSTALL += "\
     p11-kit \
     "
 	
-IMAGE_INSTALL:append:sam9x60-curiosity-sd = " tc2 e2fsprogs parted"
+IMAGE_INSTALL:append:sam9x60-curiosity-sd = " tc2 e2fsprogs-mke2fs e2fsprogs-resize2fs parted"
 IMAGE_INSTALL:remove:sam9x60-curiosity-sd = " bluez5 alsa-utils"
 
 IMAGE_INSTALL:append:sama5d2 = " nodejs nodejs-npm"

@@ -1,0 +1,4 @@
+
+
+diff -urN ../../../../../poky/build-microchip/tmp/work-shared/sam9x60-curiosity-sd/kernel-source/.pc/at91-sam9x60_curiosity.dts.patch/arch/arm/boot/dts/microchip/at91-sam9x60_curiosity.dts at91-sam9x60_curiosity.dts > test.diff
+

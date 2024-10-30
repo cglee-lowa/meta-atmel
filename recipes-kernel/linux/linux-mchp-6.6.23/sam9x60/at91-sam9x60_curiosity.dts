@@ -17,7 +17,7 @@
 	aliases {
 		i2c0 = &i2c0;
 		serial1 = &uart1;
-		serial5 = &uart5;
+		serial2 = &uart5;
 	};
 
 	chosen {
@@ -129,14 +129,14 @@
 
 		pinctrl_flx1_default: flx1-usart {
 			atmel,pins =
-				<AT91_PIOA 5 AT91_PERIPH_C AT91_PINCTRL_NONE
-				 AT91_PIOA 6 AT91_PERIPH_C AT91_PINCTRL_NONE>;
+				<AT91_PIOA 5 AT91_PERIPH_A AT91_PINCTRL_NONE
+				 AT91_PIOA 6 AT91_PERIPH_A AT91_PINCTRL_NONE>;
 		};
 
 		pinctrl_flx5_default: flx5-usart {
 			atmel,pins =
-				<AT91_PIOA 21 AT91_PERIPH_C AT91_PINCTRL_NONE
-				 AT91_PIOA 22 AT91_PERIPH_C AT91_PINCTRL_NONE>;
+				<AT91_PIOA 21 AT91_PERIPH_B AT91_PINCTRL_NONE
+				 AT91_PIOA 22 AT91_PERIPH_B AT91_PINCTRL_NONE>;
 		};
 	};
 

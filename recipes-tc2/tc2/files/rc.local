@@ -1,0 +1,24 @@
+#!/bin/sh
+P2SIZE=$(fdisk -l | grep /dev/mmcblk0p2 | awk '{print $3}')
+#echo $P2SIZE
+if [ "$P2SIZE" -le  2000000 ]; then
+    echo "eMMC Need Resize"
+    (
+     echo d
+     echo 2
+     echo n
+     echo p
+     echo 2
+     echo 42608
+     echo
+     echo n
+     echo w
+     echo q
+     ) | fdisk /dev/mmcblk0;
+     resize2fs /dev/mmcblk0p2;
+     reboot;
+     exit 0
+fi
+cd /home/root
+/home/root/start.sh
+exit 0

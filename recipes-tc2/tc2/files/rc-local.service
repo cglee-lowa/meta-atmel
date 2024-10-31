@@ -1,0 +1,14 @@
+# rc-local.service
+[Unit]
+Description=/etc/rc.local Compatibility
+ConditionPathExists=/etc/rc.local
+#After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/rc.local
+TimeoutSec=0
+RemainAfterExit=no
+
+[Install]
+WantedBy=default.target

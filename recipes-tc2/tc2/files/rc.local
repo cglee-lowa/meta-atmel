@@ -4,6 +4,10 @@ if [ -z "$AUTOLOGIN" ]; then
     echo "Set Auto Login"
     sed -i -e 's/^\(ExecStart *=.*getty \)/\1-a root /' /lib/systemd/system/serial-getty@.service
 fi
+BASHRC=$(cat /etc/profile | grep '~/.bashrc')
+if [ -z "$BASHRC" ]; then
+    echo -e"\n~/.bashrc" >> /etc/profile
+fi
 
 P2SIZE=$(fdisk -l | grep /dev/mmcblk0p2 | awk '{print $3}')
 #echo $P2SIZE
@@ -30,7 +34,4 @@ fallocate -l 1G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-
-cd /home/root
-/home/root/start.sh
 exit 0

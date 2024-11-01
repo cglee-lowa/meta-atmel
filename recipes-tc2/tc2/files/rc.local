@@ -19,6 +19,12 @@ if [ "$P2SIZE" -le  2000000 ]; then
      reboot;
      exit 0
 fi
+
+fallocate -l 1G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+
 cd /home/root
 /home/root/start.sh
 exit 0

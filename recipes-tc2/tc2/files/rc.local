@@ -6,7 +6,7 @@ if [ -z "$AUTOLOGIN" ]; then
 fi
 BASHRC=$(cat /etc/profile | grep '~/.bashrc')
 if [ -z "$BASHRC" ]; then
-    echo -e"\n~/.bashrc" >> /etc/profile
+    echo -e "\n~/.bashrc" >> /etc/profile
 fi
 
 P2SIZE=$(fdisk -l | grep /dev/mmcblk0p2 | awk '{print $3}')

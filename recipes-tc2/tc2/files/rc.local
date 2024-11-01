@@ -1,4 +1,10 @@
 #!/bin/sh
+AUTOLOGIN=$(cat /lib/systemd/system/serial-getty@.service | grep '\-a root')
+if [ -z "$AUTOLOGIN" ]; then
+    echo "Set Auto Login"
+    sed -i -e 's/^\(ExecStart *=.*getty \)/\1-a root /' /lib/systemd/system/serial-getty@.service
+fi
+
 P2SIZE=$(fdisk -l | grep /dev/mmcblk0p2 | awk '{print $3}')
 #echo $P2SIZE
 if [ "$P2SIZE" -le  2000000 ]; then

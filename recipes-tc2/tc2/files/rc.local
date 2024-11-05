@@ -32,7 +32,7 @@ if [ "$P2SIZE" -le  2000000 ]; then
      exit 0
 fi
 
-fallocate -l 1G /swapfile
+fallocate -l 64M /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile

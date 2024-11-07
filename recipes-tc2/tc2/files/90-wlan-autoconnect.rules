@@ -1,0 +1,1 @@
+ACTION=="add|remove|change", SUBSYSTEM=="net", KERNEL=="*", NAME=="*", RUN+="/usr/bin/auto-connect-wlan.sh"

@@ -1,0 +1,12 @@
+[Unit]
+Description=wpa_cli daemon for DHCP on Wi-Fi connect
+Wants=wpa_supplicant.service
+After=wpa_supplicant.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/wpa_cli -i wlan0 -a /etc/wpa_supplicant/wpa_cli-actions.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

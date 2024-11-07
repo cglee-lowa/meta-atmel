@@ -18,7 +18,10 @@ sama5d27-som1-ek-optee-sd = " file://sama5-linux-optee.cfg \
                               "
 SRC_URI:append:sam9x60    = " file://at91_dt.cfg"
 #cglee 2024.10.26
+# metis
 SRC_URI:append:sam9x60-curiosity-sd = " file://sam9x60/at91-sam9x60_curiosity.dts.patch"
+# evel board patch : usb pin different
+#SRC_URI:append:sam9x60-curiosity-sd = " file://sam9x60/evalboard.dts.patch"
 
 #SRCREV = "bf96df830936986fdb3c7789749ff599300dae01"
 SRCREV = "${AUTOREV}"

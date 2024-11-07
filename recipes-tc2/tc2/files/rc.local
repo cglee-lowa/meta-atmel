@@ -12,8 +12,16 @@ fi
 P2SIZE=$(fdisk -l | grep /dev/mmcblk0p2 | awk '{print $3}')
 #echo $P2SIZE
 if [ "$P2SIZE" -le  2000000 ]; then
+    // account add
     usermod -p '$1$h9pNG5Xe$xJdDzk4hIQJTrUmpNZeQt1' root
     useradd -p '$1$OCJuf78E$yZJLb9cj.UKDG6sgZIXCV/' user
+    # default wi-fi ap add
+    echo "network={" >> /etc/wpa_supplicant.conf
+    echo "ssid=\"A1515\"" >> /etc/wpa_supplicant.conf
+    echo "psk=\"megakiss\"" >> /etc/wpa_supplicant.conf
+    echo "}" >> /etc/wpa_supplicant.conf
+    # journal log off
+    echo "Storage=none" >> /etc/systemd/journald.conf
     echo "eMMC Need Resize"
     (
      echo d
@@ -32,7 +40,7 @@ if [ "$P2SIZE" -le  2000000 ]; then
      exit 0
 fi
 
-fallocate -l 64M /swapfile
+fallocate -l 256M /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile

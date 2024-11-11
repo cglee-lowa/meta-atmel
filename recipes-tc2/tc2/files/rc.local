@@ -22,6 +22,8 @@ if [ "$P2SIZE" -le  2000000 ]; then
     echo "}" >> /etc/wpa_supplicant.conf
     # journal log off
     echo "Storage=none" >> /etc/systemd/journald.conf
+    # wi-fi default off
+    systemctl disable wpa_cli.service
     # hostname
     hostnamectl set-hostname metis
     # emmc expand

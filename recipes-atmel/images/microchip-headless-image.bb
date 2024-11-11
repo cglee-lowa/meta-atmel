@@ -16,6 +16,7 @@ IMAGE_INSTALL += "\
     "
 	
 IMAGE_INSTALL:append:sam9x60-curiosity-sd = " tc2 e2fsprogs-mke2fs e2fsprogs-resize2fs parted"
+IMAGE_INSTALL:append:sam9x60-curiosity-sd = " socat redis shc minicom iftop ifmetric cjson libc-dev glibc-utils nano"
 IMAGE_INSTALL:remove:sam9x60-curiosity-sd = " alsa-utils"
 
 IMAGE_INSTALL:append:sama5d2 = " nodejs nodejs-npm"

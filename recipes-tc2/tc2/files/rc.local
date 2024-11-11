@@ -26,6 +26,8 @@ if [ "$P2SIZE" -le  2000000 ]; then
     systemctl disable wpa_cli.service
     # hostname
     hostnamectl set-hostname metis
+    # networkd-dispatcher
+    systemctl enable networkd-dispatcher
     # emmc expand
     echo "eMMC Need Resize"
     (

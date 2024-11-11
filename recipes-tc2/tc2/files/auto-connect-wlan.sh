@@ -10,4 +10,10 @@ if [ "$INTERFACE" == "wlan0" ] && [ "$ACTION" == "remove" ]; then
     /usr/bin/killall wpa_supplicant
     /usr/bin/killall udhcpc 
 fi
+if [ "$INTERFACE" == "wwan0" ] && [ "$ACTION" == "add" ]; then
+    ifconfig $INTERFACE up
+fi
+if [ "$INTERFACE" == "wwan0" ] && [ "$ACTION" == "remove" ]; then
+    ifconfig $INTERFACE down
+fi
 echo $INTERFACE $ACTION "end" >/dev/ttyS0

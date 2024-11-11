@@ -21,6 +21,11 @@ SRC_URI += "file://auto-connect-wlan.sh"
 SRC_URI += "file://wpa_cli.service"
 SRC_URI += "file://wpa_cli-actions.sh"
 
+SRC_URI += "file://10-wwan0-dhcp.sh"
+SRC_URI += "file://udhcpd-on-networkd.service"
+SRC_URI += "file://start_udhcpd.sh"
+
+
 # 파일을 복사할 설치 경로를 지정
 do_install() {
     install -d ${D}${bindir}
@@ -41,6 +46,13 @@ do_install() {
     install -m 0755 ${WORKDIR}/wpa_cli.service ${D}/etc/systemd/system/wpa_cli.service
     install -d ${D}/etc/wpa_supplicant
     install -m 0755 ${WORKDIR}/wpa_cli-actions.sh ${D}/etc/wpa_supplicant/wpa_cli-actions.sh
+    # wwan
+    install -d ${D}/etc/networkd-dispatcher/degraded.d
+    install -m 0755 ${WORKDIR}/10-wwan0-dhcp.sh ${D}/etc/networkd-dispatcher/degraded.d/10-wwan0-dhcp.sh
+    install -d ${D}/etc/systemd/system
+    install -m 0755 ${WORKDIR}/udhcpd-on-networkd.service ${D}/etc/systemd/system/udhcpd-on-networkd.service
+    install -d ${D}/usr/bin
+    install -m 0755 ${WORKDIR}/start_udhcpd.sh ${D}/usr/bin/start_udhcpd.sh
 }
 
 # 패키징 시 파일 경로를 지정 (필수는 아니지만, 명시적으로 설정)
@@ -52,6 +64,9 @@ FILES:${PN} += "/etc/udev/rules.d/90-wlan-autoconnect.rules"
 FILES:${PN} += "/usr/bin/auto-connect-wlan.sh"
 FILES:${PN} += "/etc/systemd/system/wpa_cli.service"
 FILES:${PN} += "/etc/wpa_supplicant/wpa_cli-actions.sh"
+FILES:${PN} += "/etc/networkd-dispatcher/degraded.d/10-wwan0-dhcp.sh"
+FILES:${PN} += "/etc/systemd/system/udhcpd-on-networkd.service"
+FILES:${PN} += "/usr/bin/start_udhcpd.sh"
 
 INSANE_SKIP_${PN} = "ldflags"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
@@ -59,4 +74,5 @@ INHIBIT_PACKAGE_STRIP = "1"
 DEPENDS += " zlib"
 SYSTEMD_SERVICE:${PN} += "rc-local.service"
 SYSTEMD_SERVICE:${PN} += "wpa_cli.service"
+SYSTEMD_SERVICE:${PN} += "udhcpd-on-networkd.service"
 inherit systemd

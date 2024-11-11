@@ -1,0 +1,12 @@
+[Unit]
+Description=Run udhcpc on wwan0 when systemd-networkd starts
+Wants=systemd-networkd.service
+After=systemd-networkd.service
+
+[Service]
+ExecStart=/usr/bin/start_udhcpd.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

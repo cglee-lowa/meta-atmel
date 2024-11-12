@@ -395,7 +395,7 @@
  	};
  
  	usb0 {
-@@ -430,35 +160,23 @@
+@@ -430,36 +160,26 @@
  
  	usb1 {
  		pinctrl_usb_default: usb-default {
@@ -434,9 +434,12 @@
 -	pinctrl-0 = <&pinctrl_sdmmc1_default>;
 +	pinctrl-0 = <&pinctrl_sdmmc0_default>;
  	disable-wp;
++	non-removable;
++	broken-cd;
  	status = "okay";
  };
-@@ -497,9 +215,9 @@
+ 
+@@ -497,9 +217,9 @@
  
  &usb1 {
  	num-ports = <3>;

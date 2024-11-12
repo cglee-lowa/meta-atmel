@@ -18,7 +18,7 @@ IMAGE_INSTALL += "\
 IMAGE_INSTALL:append:sam9x60-curiosity-sd = " tc2 e2fsprogs-mke2fs e2fsprogs-resize2fs parted"
 IMAGE_INSTALL:append:sam9x60-curiosity-sd = " socat redis shc minicom iftop ifmetric cjson glibc nano"
 IMAGE_INSTALL:append:sam9x60-curiosity-sd = " networkd-dispatcher"
-IMAGE_INSTALL:append:sam9x60-curiosity-sd = " gcc g++"
+IMAGE_INSTALL:append:sam9x60-curiosity-sd = " packagegroup-core-buildessential"
 IMAGE_INSTALL:remove:sam9x60-curiosity-sd = " alsa-utils"
 
 IMAGE_INSTALL:append:sama5d2 = " nodejs nodejs-npm"

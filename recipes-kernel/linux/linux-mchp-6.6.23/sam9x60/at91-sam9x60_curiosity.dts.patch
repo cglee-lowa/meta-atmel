@@ -1,5 +1,5 @@
 --- a/arch/arm/boot/dts/microchip/at91-sam9x60_curiosity.dts	2024-10-29 15:29:12.754298146 +0900
-+++ b/arch/arm/boot/dts/microchip/at91-sam9x60_curiosity.dts	2024-10-30 11:23:57.348181853 +0900
++++ b/arch/arm/boot/dts/microchip/at91-sam9x60_curiosity.dts	2024-11-12 11:23:57.348181853 +0900
 @@ -16,8 +16,8 @@
  
  	aliases {
@@ -290,17 +290,13 @@
  		};
  
 -		pinctrl_flx6_default: flx6-twi {
-+		pinctrl_flx1_default: flx1-usart {
- 			atmel,pins =
+-			atmel,pins =
 -				<AT91_PIOA 30 AT91_PERIPH_A AT91_PINCTRL_PULL_UP
 -				 AT91_PIOA 31 AT91_PERIPH_A AT91_PINCTRL_PULL_UP>;
-+				<AT91_PIOA 5 AT91_PERIPH_A AT91_PINCTRL_NONE
-+				 AT91_PIOA 6 AT91_PERIPH_A AT91_PINCTRL_NONE>;
- 		};
- 
+-		};
+-
 -		pinctrl_flx7_default: flx7-usart {
-+		pinctrl_flx5_default: flx5-usart {
- 			atmel,pins =
+-			atmel,pins =
 -				<AT91_PIOC 0 AT91_PERIPH_C AT91_PINCTRL_NONE
 -				 AT91_PIOC 1 AT91_PERIPH_C AT91_PINCTRL_NONE>;
 -		};
@@ -339,13 +335,17 @@
 -
 -	nand {
 -		pinctrl_nand_oe_we: nand-oe-we-0 {
--			atmel,pins =
++		pinctrl_flx1_default: flx1-usart {
+ 			atmel,pins =
 -				<AT91_PIOD 0 AT91_PERIPH_A (AT91_PINCTRL_NONE | AT91_PINCTRL_SLEWRATE_DIS)
 -				 AT91_PIOD 1 AT91_PERIPH_A (AT91_PINCTRL_NONE | AT91_PINCTRL_SLEWRATE_DIS)>;
--		};
--
++				<AT91_PIOA 5 AT91_PERIPH_A AT91_PINCTRL_NONE
++				 AT91_PIOA 6 AT91_PERIPH_A AT91_PINCTRL_NONE>;
+ 		};
+ 
 -		pinctrl_nand_rb: nand-rb-0 {
--			atmel,pins =
++		pinctrl_flx5_default: flx5-usart {
+ 			atmel,pins =
 -				<AT91_PIOD 5 AT91_PERIPH_GPIO AT91_PINCTRL_PULL_UP>;
 -		};
 -
@@ -371,10 +371,17 @@
  		};
  	};
  
-@@ -410,18 +157,6 @@
+@@ -403,23 +150,6 @@
+ 				 AT91_PIOA 19 AT91_PERIPH_A (AT91_PINCTRL_PULL_UP | AT91_PINCTRL_DRIVE_STRENGTH_HI)	/* PA19 DAT2 periph A with pullup */
+ 				 AT91_PIOA 20 AT91_PERIPH_A (AT91_PINCTRL_PULL_UP | AT91_PINCTRL_DRIVE_STRENGTH_HI)>;	/* PA20 DAT3 periph A with pullup */
  		};
- 	};
- 
+-
+-		pinctrl_sdmmc0_cd: sdmmc0-cd {
+-			atmel,pins =
+-				<AT91_PIOA 25 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
+-		};
+-	};
+-
 -	sdmmc1 {
 -		pinctrl_sdmmc1_default: sdmmc1 {
 -			atmel,pins =
@@ -385,12 +392,10 @@
 -				 AT91_PIOA 3 AT91_PERIPH_B (AT91_PINCTRL_PULL_UP | AT91_PINCTRL_DRIVE_STRENGTH_HI)	/* PA3 DAT2 periph B with pullup */
 -				 AT91_PIOA 4 AT91_PERIPH_B (AT91_PINCTRL_PULL_UP | AT91_PINCTRL_DRIVE_STRENGTH_HI)>;	/* PA4 DAT3 periph B with pullup */
 -		};
--	};
--
+ 	};
+ 
  	usb0 {
- 		pinctrl_usba_vbus: usba-vbus {
- 			atmel,pins = <AT91_PIOA 27 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
-@@ -430,35 +165,24 @@
+@@ -430,35 +160,23 @@
  
  	usb1 {
  		pinctrl_usb_default: usb-default {
@@ -414,7 +419,7 @@
  };
  
  &sdmmc0 {
-+	dmas = <0>, <0>; // 2024.10.24 sechang add
++	dmas = <0>, <0>;
  	bus-width = <4>;
  	pinctrl-names = "default";
 -	pinctrl-0 = <&pinctrl_sdmmc0_default &pinctrl_sdmmc0_cd>;
@@ -427,12 +432,11 @@
 -	bus-width = <4>;
 -	pinctrl-names = "default";
 -	pinctrl-0 = <&pinctrl_sdmmc1_default>;
-+	// 2024.10.24 sechang remove
 +	pinctrl-0 = <&pinctrl_sdmmc0_default>;
  	disable-wp;
  	status = "okay";
  };
-@@ -497,9 +221,9 @@
+@@ -497,9 +215,9 @@
  
  &usb1 {
  	num-ports = <3>;
@@ -445,9 +449,3 @@
  	pinctrl-names = "default";
  	pinctrl-0 = <&pinctrl_usb_default>;
  	status = "okay";
-@@ -512,3 +236,5 @@
- &watchdog {
- 	status = "okay";
- };
-+
-+ // megakiss 2024.10.30

@@ -150,11 +150,6 @@
 				 AT91_PIOA 19 AT91_PERIPH_A (AT91_PINCTRL_PULL_UP | AT91_PINCTRL_DRIVE_STRENGTH_HI)	/* PA19 DAT2 periph A with pullup */
 				 AT91_PIOA 20 AT91_PERIPH_A (AT91_PINCTRL_PULL_UP | AT91_PINCTRL_DRIVE_STRENGTH_HI)>;	/* PA20 DAT3 periph A with pullup */
 		};
-
-		pinctrl_sdmmc0_cd: sdmmc0-cd {
-			atmel,pins =
-				<AT91_PIOA 25 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
-		};
 	};
 
 	usb0 {
@@ -178,10 +173,9 @@
 };
 
 &sdmmc0 {
-	dmas = <0>, <0>; // 2024.10.24 sechang add
+	dmas = <0>, <0>;
 	bus-width = <4>;
 	pinctrl-names = "default";
-	// 2024.10.24 sechang remove
 	pinctrl-0 = <&pinctrl_sdmmc0_default>;
 	disable-wp;
 	status = "okay";
@@ -236,5 +230,3 @@
 &watchdog {
 	status = "okay";
 };
-
-make error

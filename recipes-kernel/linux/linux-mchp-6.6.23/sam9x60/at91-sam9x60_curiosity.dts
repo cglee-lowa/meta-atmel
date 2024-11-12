@@ -182,9 +182,7 @@
 	bus-width = <4>;
 	pinctrl-names = "default";
 	// 2024.10.24 sechang remove
-	pinctrl-0 = <&pinctrl_sdmmc0_default &pinctrl_sdmmc0_cd>;
-	// 2024.10.24 sechang remove
-	//cd-gpios = <&pioA 25 GPIO_ACTIVE_LOW>;
+	pinctrl-0 = <&pinctrl_sdmmc0_default>;
 	disable-wp;
 	status = "okay";
 };

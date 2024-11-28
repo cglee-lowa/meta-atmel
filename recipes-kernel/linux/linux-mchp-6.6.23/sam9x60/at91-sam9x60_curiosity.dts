@@ -177,6 +177,7 @@
 	bus-width = <4>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_sdmmc0_default>;
+	disable-wp;
 	non-removable;
 	status = "okay";
 };
